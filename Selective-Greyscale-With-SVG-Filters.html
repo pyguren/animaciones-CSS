@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>SVG Filters</title>
+    <style>
+        body {
+            background: black;
+            color: white;
+            transform: translate(-50%, -50%);
+            top: 50%;
+            left: 50%;
+            position: absolute;
+        }
+
+        svg {
+            margin: 0px 0px;
+        }
+
+        p {
+            font-size: 20pt;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-left: 50px;
+            text-align: center;
+        }
+    </style>>
+
+</head>
+
+<body>
+    <p> Selective Greyscale With SVG Filters</p>
+    <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="800px" height="600px">
+        <defs>
+            <filter id="redcoat" color-interpolation-filters="linearRGB">
+                <feColorMatrix in="SourceGraphic" result="BigRed" type="matrix" values="0 0 0 0 0
+0 0 0 0 0
+0 0 0 0 0
+3.8 -4 -4 0 -0.5">
+                </feColorMatrix>
+
+                <feColorMatrix type="saturate" values="0" in="SourceGraphic" result="GreySource" />
+                <feComposite operator="in" in="SourceGraphic" in2="BigRed" result="RedOriginal" />
+
+                <feComposite operator="atop" in="RedOriginal" in2="GreySource" result="final" />
+
+            </filter>
+        </defs>
+        <image x="0" y="-40" width="550" height="600" preserveAspectRatio="xMinYMin meet" filter="url(#redcoat)"
+            xlink:href="https://images.pexels.com/photos/2065203/pexels-photo-2065203.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+        <image x="400" y="-40" width="550" height="600" preserveAspectRatio="xMinYMin meet"
+            xlink:href="https://images.pexels.com/photos/2065203/pexels-photo-2065203.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" />
+    </svg>
+</body>
+
+</html>

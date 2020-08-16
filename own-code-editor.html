@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <title>Real Time Editor</title>
+    <script>
+        function refresh() {
+            var content = document.getElementById('editor').value;
+            document.getElementById('viewer').srcdoc = content;
+        }
+    </script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: content-box;
+
+
+        }
+
+        .main {
+            background: #ecf0f1;
+            width: 100%;
+            height: 100%;
+            display: inline-flex;
+            position: fixed;
+
+
+        }
+
+        #editor {
+            width: 100%;
+            height: 100%;
+            margin: 5px;
+            border: 1px solid black;
+            background: black;
+            color: lightblue;
+            font-size: 18px;
+
+        }
+
+        #viewer {
+            background: white;
+            border: none;
+            width: 100%;
+            height: 100%;
+            margin: 5px;
+            border: 1px solid black;
+
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+        <textarea id="editor" onkeyup="refresh()"></textarea>
+        <iframe id="viewer"></iframe>
+
+    </div>
+
+</body>
+
+</html>
